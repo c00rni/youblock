@@ -73,3 +73,8 @@ echo -e "\033[35mSystem Controls:"
 echo -e "  Status Check: systemctl status youblock"
 echo -e "  View Logs:    journalctl -u youblock.service"
 echo -e "  Integrity Test: Remove any rule from /etc/hosts - auto-restore in 5s\033[0m"
+
+# Wait for key press
+echo -en "\033[1;34mPress any key to conclude uninstallation...\033[0m"
+read -n 1 -s -r
+echo
