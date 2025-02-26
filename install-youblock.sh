@@ -25,21 +25,11 @@ echo
 
 # Create blocker script
 echo -e "\033[1;33m[1/4] Deploying blocker engine...\033[0m"
-cat > /usr/local/bin/youblock.sh <<'EOL'
-#!/bin/bash
-while true; do
-    for host in youtube.com www.youtube.com; do
-        if ! grep -qFx "127.0.0.2 $host" /etc/hosts; then
-            echo "127.0.0.2 $host" >> /etc/hosts
-        fi
-    done
-    sleep 5
-done
-EOL
+cp deamon/youblock /usr/local/bin/youblock
 
 # Set permissions
 echo -e "\033[1;33m[2/4] Configuring security...\033[0m"
-chmod 744 /usr/local/bin/youblock.sh
+chmod 744 /usr/local/bin/youblock
 
 # Create systemd service
 echo -e "\033[1;33m[3/4] Building service layer...\033[0m"
@@ -50,7 +40,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/youblock.sh
+ExecStart=/usr/local/bin/youblock
 Restart=always
 User=root
 

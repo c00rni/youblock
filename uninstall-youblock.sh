@@ -25,11 +25,11 @@ echo
 
 # Stop and remove service
 echo -e "\033[1;33m[1/3] Stopping service...\033[0m"
-systemctl stop youtube-blocker || true
+systemctl stop youblock || true
 
 echo -e "\033[1;33m[2/3] Removing components...\033[0m"
 systemctl disable youtube-blocker || true
-rm -f /etc/systemd/system/youtube-blocker.service /usr/local/bin/youtube-blocker.sh
+rm -f /etc/systemd/system/youblock.service /usr/local/bin/youblock
 
 echo -e "\033[1;33m[3/3] Cleaning up...\033[0m"
 systemctl daemon-reload
